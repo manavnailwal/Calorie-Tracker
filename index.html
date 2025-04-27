@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Calorie Tracker</title>
+</head>
+
+<body>
+  <div>
+    <div>
+      <h4>Start Your Tracking Journey!</h4>
+      <label for="nameField">Enter Your Name:</label>
+      <input type="text" id="nameField" class="nameField">
+      <button class="beginBtn">Begin!</button>
+    </div>
+  </div>
+
+  <script>
+    if (localStorage.getItem("name") !== null) {
+      location.href = "tracker.html";
+    }
+
+    const nameField = document.querySelector(".nameField");
+    const beginBtn = document.querySelector(".beginBtn");
+
+    beginBtn.addEventListener("click", begin);
+
+    function begin() {
+      if (nameField.value === null || nameField.value === "") {
+        nameField.value = "anon";
+      }
+      localStorage.setItem("name", nameField.value);
+      location.href = "tracker.html";
+    }
+
+  </script>
+
+</body>
+
+</html>

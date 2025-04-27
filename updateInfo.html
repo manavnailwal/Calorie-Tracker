@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Update Info</title>
+</head>
+
+<body>
+  <div>
+    <div>
+      <label for="currentWeightField">Enter your current weight:</label>
+      <input type="number" id="currentWeightField" class="currentWeightField">
+    </div>
+
+    <div>
+      <label for="goalWeightField">Enter the weight you want to achieve:</label>
+      <input type="number" id="goalWeightField" class="goalWeightField">
+    </div>
+
+    <div>
+      <button class="updateInfoBtn">Update Info</button>
+    </div>
+
+    <div>
+      <button class="updateNameBtn">Update Name</button>
+    </div>
+  </div>
+
+  <script>
+    const updateNameBtn = document.querySelector(".updateNameBtn");
+    const currentWeightField = document.querySelector(".currentWeightField");
+    const goalWeightField = document.querySelector(".goalWeightField");
+    const updateInfoBtn = document.querySelector(".updateInfoBtn");
+
+    updateNameBtn.addEventListener("click", updateName);
+
+    updateInfoBtn.addEventListener("click", updateInfo);
+
+    function updateInfo() {
+      let currentWeight = currentWeightField.value;
+      let goalWeight = goalWeightField.value;
+
+      if (currentWeightField.value !== "") {
+        localStorage.setItem("currentWeight", currentWeightField.value);
+      }
+      if (goalWeightField.value !== "") {
+        localStorage.setItem("goalWeight", goalWeightField.value);
+      }
+
+      currentWeightField.value = "";
+      goalWeightField.value = "";
+
+      location.href = "tracker.html";
+    }
+
+    function updateName() {
+      localStorage.removeItem("name");
+      location.href = "index.html";
+    }
+
+  </script>
+
+</body>
+
+</html>
