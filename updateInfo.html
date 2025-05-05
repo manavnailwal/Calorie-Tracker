@@ -40,10 +40,10 @@
       let currentWeight = currentWeightField.value;
       let goalWeight = goalWeightField.value;
 
-      if (currentWeightField.value !== "") {
+      if (currentWeightField.value !== "" || currentWeightField.value !== null) {
         localStorage.setItem("currentWeight", currentWeightField.value);
       }
-      if (goalWeightField.value !== "") {
+      if (goalWeightField.value !== "" || currentWeightField.value !== null) {
         localStorage.setItem("goalWeight", goalWeightField.value);
       }
 

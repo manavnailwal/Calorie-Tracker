@@ -10,27 +10,28 @@
     <div>
       <h4>Start Your Tracking Journey!</h4>
       <label for="nameField">Enter Your Name:</label>
-      <input type="text" id="nameField" class="nameField">
+      <input type="text" id="nameField" class="nameField"><br>
+      <label for="passwordField">Enter Password:</label>
+      <input type="text" id="passwordField" class="passwordField">
       <button class="beginBtn">Begin!</button>
+      <p></p>
     </div>
   </div>
 
   <script>
-    if (localStorage.getItem("name") !== null) {
-      location.href = "tracker.html";
-    }
-
     const nameField = document.querySelector(".nameField");
+    const passwordField = document.querySelector(".passwordField");
     const beginBtn = document.querySelector(".beginBtn");
 
     beginBtn.addEventListener("click", begin);
 
     function begin() {
-      if (nameField.value === null || nameField.value === "") {
-        nameField.value = "anon";
+      if (nameField.value === null || nameField.value === "" || passwordField.value === null || passwordField.value === "") {
+        location.href = "index.html";
+      } else {
+        localStorage.setItem("name", nameField.value);
+        location.href = "updateInfo.html";
       }
-      localStorage.setItem("name", nameField.value);
-      location.href = "tracker.html";
     }
 
   </script>

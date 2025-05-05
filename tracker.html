@@ -46,11 +46,17 @@
     let calories = JSON.parse(localStorage.getItem("calories")) || 0;
     var foodArray = JSON.parse(localStorage.getItem("food")) || [];
 
-    let date = new Date().toDateString();
-    localStorage.setItem("date", date);
-
     let storedDate = localStorage.getItem("date");
-    const currentDate = new Date().toDateString();
+    let currentDate = new Date().toDateString();
+
+    if (!storedDate) {
+      localStorage.setItem("date", currentDate);
+      storedDate = currentDate;
+    }
+
+    if (storedDate !== currentDate) {
+      newDay();
+    }
 
     const introPara = document.querySelector(".introPara");
     const finalFood = document.querySelector(".finalFood");
@@ -69,7 +75,11 @@
 
     introPara.textContent = `Hey ${localStorage.getItem("name")}, what you ate?`;
 
-    motivation.textContent = `Remember, you are doing it to go from ${localStorage.getItem("currentWeight")} kgs to ${localStorage.getItem("goalWeight")} kgs. You got this! `
+    if (localStorage.getItem("currentWeight") === null || localStorage.getItem("currentWeight") === "" || localStorage.getItem("goalWeight") === null || localStorage.getItem("goalWeight") == "") {
+      motivation.textContent = "";
+    } else {
+      motivation.textContent = `Remember, you are doing it to go from ${localStorage.getItem("currentWeight")} kgs to ${localStorage.getItem("goalWeight")} kgs. You got this! `;
+    }
 
     const btn = document.getElementById("#button");
 
@@ -84,6 +94,18 @@
     function add() {
       if (storedDate !== currentDate) {
         newDay();
+      }
+
+      if (foodField.value === null || foodField.value === "" || calorieField.value === null || calorieField.value === "") {
+        emptyStomach.textContent = "Eating air does not count.";
+        emptyStomach.style.backgroundColor = "white";
+        emptyStomach.style.color = "black";
+
+        finalFood.textContent = " ";
+        whatIAte.textContent = " ";
+        caloriesConsumed.textContent = " ";
+
+        return;
       }
 
       calories = calories + Number(calorieField.value);
@@ -151,9 +173,7 @@
 
       emptyStomach.textContent = "It's a new day";
 
-      date = currentDate;
-      localStorage.setItem("date", date);
-      storedDate = localStorage.getItem("date");
+      localStorage.setItem("date", currentDate);
     }
 
     function updateInfo() {
