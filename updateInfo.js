@@ -1,5 +1,3 @@
-//js for updateInfo.html
-
 const updateNameBtn = document.querySelector(".updateNameBtn");
 const currentWeightField = document.querySelector(".currentWeightField");
 const goalWeightField = document.querySelector(".goalWeightField");

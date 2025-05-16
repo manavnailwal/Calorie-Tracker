@@ -42,142 +42,144 @@
   </div>
 
   <script src="tracker.js">
-    let calories = JSON.parse(localStorage.getItem("calories")) || 0;
-    var foodArray = JSON.parse(localStorage.getItem("food")) || [];
+    // put this into tracker.js and commented out.
 
-    let storedDate = localStorage.getItem("date");
-    let currentDate = new Date().toDateString();
+    // let calories = JSON.parse(localStorage.getItem("calories")) || 0;
+    // var foodArray = JSON.parse(localStorage.getItem("food")) || [];
 
-    if (!storedDate) {
-      localStorage.setItem("date", currentDate);
-      storedDate = currentDate;
-    }
+    // let storedDate = localStorage.getItem("date");
+    // let currentDate = new Date().toDateString();
 
-    if (storedDate !== currentDate) {
-      newDay();
-    }
+    // if (!storedDate) {
+    //   localStorage.setItem("date", currentDate);
+    //   storedDate = currentDate;
+    // }
 
-    const introPara = document.querySelector(".introPara");
-    const finalFood = document.querySelector(".finalFood");
-    const finalCalories = document.querySelector(".finalCalories");
-    const whatIAte = document.querySelector(".whatIAte");
-    const caloriesConsumed = document.querySelector(".caloriesConsumed");
-    const emptyStomach = document.querySelector(".emptyStomach");
-    const motivation = document.querySelector(".motivation");
+    // if (storedDate !== currentDate) {
+    //   newDay();
+    // }
 
-    const foodField = document.querySelector(".foodField");
-    const calorieField = document.querySelector(".calorieField");
-    const addBtn = document.querySelector(".addBtn");
-    const whatIAteBtn = document.querySelector(".whatIAteBtn");
-    const resetBtn = document.querySelector(".resetBtn");
-    const updateInfoBtn = document.querySelector(".updateInfoBtn");
+    // const introPara = document.querySelector(".introPara");
+    // const finalFood = document.querySelector(".finalFood");
+    // const finalCalories = document.querySelector(".finalCalories");
+    // const whatIAte = document.querySelector(".whatIAte");
+    // const caloriesConsumed = document.querySelector(".caloriesConsumed");
+    // const emptyStomach = document.querySelector(".emptyStomach");
+    // const motivation = document.querySelector(".motivation");
 
-    introPara.textContent = `Hey ${localStorage.getItem("name")}, what you ate?`;
+    // const foodField = document.querySelector(".foodField");
+    // const calorieField = document.querySelector(".calorieField");
+    // const addBtn = document.querySelector(".addBtn");
+    // const whatIAteBtn = document.querySelector(".whatIAteBtn");
+    // const resetBtn = document.querySelector(".resetBtn");
+    // const updateInfoBtn = document.querySelector(".updateInfoBtn");
 
-    if (localStorage.getItem("currentWeight") === null || localStorage.getItem("currentWeight") === "" || localStorage.getItem("goalWeight") === null || localStorage.getItem("goalWeight") == "") {
-      motivation.textContent = "";
-    } else {
-      motivation.textContent = `Remember, you are doing it to go from ${localStorage.getItem("currentWeight")} kgs to ${localStorage.getItem("goalWeight")} kgs. You got this! `;
-    }
+    // introPara.textContent = `Hey ${localStorage.getItem("name")}, what you ate?`;
 
-    const btn = document.getElementById("#button");
+    // if (localStorage.getItem("currentWeight") === null || localStorage.getItem("currentWeight") === "" || localStorage.getItem("goalWeight") === null || localStorage.getItem("goalWeight") == "") {
+    //   motivation.textContent = "";
+    // } else {
+    //   motivation.textContent = `Remember, you are doing it to go from ${localStorage.getItem("currentWeight")} kgs to ${localStorage.getItem("goalWeight")} kgs. You got this! `;
+    // }
 
-    addBtn.addEventListener("click", add);
+    // const btn = document.getElementById("#button");
 
-    whatIAteBtn.addEventListener("click", ate);
+    // addBtn.addEventListener("click", add);
 
-    resetBtn.addEventListener("click", reset);
+    // whatIAteBtn.addEventListener("click", ate);
 
-    updateInfoBtn.addEventListener("click", updateInfoHref);
+    // resetBtn.addEventListener("click", reset);
 
-    function add() {
-      if (storedDate !== currentDate) {
-        newDay();
-      }
+    // updateInfoBtn.addEventListener("click", updateInfoHref);
 
-      if (foodField.value === null || foodField.value === "" || calorieField.value === null || calorieField.value === "") {
-        emptyStomach.textContent = "Eating air does not count.";
-        emptyStomach.style.backgroundColor = "white";
-        emptyStomach.style.color = "black";
+    // function add() {
+    //   if (storedDate !== currentDate) {
+    //     newDay();
+    //   }
 
-        finalFood.textContent = " ";
-        whatIAte.textContent = " ";
-        caloriesConsumed.textContent = " ";
+    //   if (foodField.value === null || foodField.value === "" || calorieField.value === null || calorieField.value === "") {
+    //     emptyStomach.textContent = "Eating air does not count.";
+    //     emptyStomach.style.backgroundColor = "white";
+    //     emptyStomach.style.color = "black";
 
-        return;
-      }
+    //     finalFood.textContent = " ";
+    //     whatIAte.textContent = " ";
+    //     caloriesConsumed.textContent = " ";
 
-      calories = calories + Number(calorieField.value);
-      localStorage.setItem("calories", JSON.stringify(calories));
+    //     return;
+    //   }
 
-      foodArray.push(`${foodField.value}`);
-      localStorage.setItem("food", JSON.stringify(foodArray));
-      console.log(JSON.parse(localStorage.getItem("food")));
+    //   calories = calories + Number(calorieField.value);
+    //   localStorage.setItem("calories", JSON.stringify(calories));
 
-      foodField.value = "";
-      calorieField.value = "";
+    //   foodArray.push(`${foodField.value}`);
+    //   localStorage.setItem("food", JSON.stringify(foodArray));
+    //   console.log(JSON.parse(localStorage.getItem("food")));
 
-      finalFood.textContent = foodArray.join(",");
-      finalFood.style.backgroundColor = "green";
-      finalFood.style.color = "white"
-      finalCalories.textContent = `You ate ${calories} calories.`;
-      finalCalories.style.backgroundColor = "green";
-      finalCalories.style.color = "white";
+    //   foodField.value = "";
+    //   calorieField.value = "";
 
-      whatIAte.textContent = " ";
-      caloriesConsumed.textContent = " ";
+    //   finalFood.textContent = foodArray.join(",");
+    //   finalFood.style.backgroundColor = "green";
+    //   finalFood.style.color = "white"
+    //   finalCalories.textContent = `You ate ${calories} calories.`;
+    //   finalCalories.style.backgroundColor = "green";
+    //   finalCalories.style.color = "white";
 
-      emptyStomach.textContent = " ";
+    //   whatIAte.textContent = " ";
+    //   caloriesConsumed.textContent = " ";
 
-    }
+    //   emptyStomach.textContent = " ";
 
-    function ate() {
-      whatIAte.textContent = JSON.parse(localStorage.getItem("food"));
-      whatIAte.style.backgroundColor = "pink";
-      whatIAte.style.color = "violet";
+    // }
 
-      caloriesConsumed.textContent = JSON.parse(localStorage.getItem("calories"));
-      caloriesConsumed.style.backgroundColor = "pink";
-      caloriesConsumed.style.color = "white";
+    // function ate() {
+    //   whatIAte.textContent = JSON.parse(localStorage.getItem("food"));
+    //   whatIAte.style.backgroundColor = "pink";
+    //   whatIAte.style.color = "violet";
 
-      finalFood.textContent = " ";
-      finalCalories.textContent = " ";
-      emptyStomach.textContent = " ";
-    }
+    //   caloriesConsumed.textContent = JSON.parse(localStorage.getItem("calories"));
+    //   caloriesConsumed.style.backgroundColor = "pink";
+    //   caloriesConsumed.style.color = "white";
 
-    function reset() {
-      localStorage.removeItem("food");
-      localStorage.removeItem("calories");
+    //   finalFood.textContent = " ";
+    //   finalCalories.textContent = " ";
+    //   emptyStomach.textContent = " ";
+    // }
 
-      foodArray = [];
-      calories = 0;
+    // function reset() {
+    //   localStorage.removeItem("food");
+    //   localStorage.removeItem("calories");
 
-      finalFood.textContent = " ";
-      finalCalories.textContent = " ";
+    //   foodArray = [];
+    //   calories = 0;
 
-      whatIAte.textContent = " ";
-      caloriesConsumed.textContent = " ";
+    //   finalFood.textContent = " ";
+    //   finalCalories.textContent = " ";
 
-      emptyStomach.textContent = "You should eat something";
-      emptyStomach.style.backgroundColor = "white";
-      emptyStomach.style.color = "black";
-    }
+    //   whatIAte.textContent = " ";
+    //   caloriesConsumed.textContent = " ";
 
-    function newDay() {
-      localStorage.removeItem("food");
-      localStorage.removeItem("calories");
+    //   emptyStomach.textContent = "You should eat something";
+    //   emptyStomach.style.backgroundColor = "white";
+    //   emptyStomach.style.color = "black";
+    // }
 
-      foodArray = [];
-      calories = 0;
+    // function newDay() {
+    //   localStorage.removeItem("food");
+    //   localStorage.removeItem("calories");
 
-      emptyStomach.textContent = "It's a new day";
+    //   foodArray = [];
+    //   calories = 0;
 
-      localStorage.setItem("date", currentDate);
-    }
+    //   emptyStomach.textContent = "It's a new day";
 
-    function updateInfoHref() {
-      location.href = "updateInfo.html";
-    }
+    //   localStorage.setItem("date", currentDate);
+    // }
+
+    // function updateInfoHref() {
+    //   location.href = "updateInfo.html";
+    // }
   </script>
 </body>
 

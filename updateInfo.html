@@ -27,36 +27,38 @@
   </div>
 
   <script src="updateInfo.js">
-    const updateNameBtn = document.querySelector(".updateNameBtn");
-    const currentWeightField = document.querySelector(".currentWeightField");
-    const goalWeightField = document.querySelector(".goalWeightField");
-    const updateInfoBtn = document.querySelector(".updateInfoBtn");
+    // put this into updateInfo.js and commented out.
 
-    updateNameBtn.addEventListener("click", updateName);
+    // const updateNameBtn = document.querySelector(".updateNameBtn");
+    // const currentWeightField = document.querySelector(".currentWeightField");
+    // const goalWeightField = document.querySelector(".goalWeightField");
+    // const updateInfoBtn = document.querySelector(".updateInfoBtn");
 
-    updateInfoBtn.addEventListener("click", updateInfo);
+    // updateNameBtn.addEventListener("click", updateName);
 
-    function updateInfo() {
-      let currentWeight = currentWeightField.value;
-      let goalWeight = goalWeightField.value;
+    // updateInfoBtn.addEventListener("click", updateInfo);
 
-      if (currentWeightField.value !== "" || currentWeightField.value !== null) {
-        localStorage.setItem("currentWeight", currentWeightField.value);
-      }
-      if (goalWeightField.value !== "" || currentWeightField.value !== null) {
-        localStorage.setItem("goalWeight", goalWeightField.value);
-      }
+    // function updateInfo() {
+    //   let currentWeight = currentWeightField.value;
+    //   let goalWeight = goalWeightField.value;
 
-      currentWeightField.value = "";
-      goalWeightField.value = "";
+    //   if (currentWeightField.value !== "" || currentWeightField.value !== null) {
+    //     localStorage.setItem("currentWeight", currentWeightField.value);
+    //   }
+    //   if (goalWeightField.value !== "" || currentWeightField.value !== null) {
+    //     localStorage.setItem("goalWeight", goalWeightField.value);
+    //   }
 
-      location.href = "tracker.html";
-    }
+    //   currentWeightField.value = "";
+    //   goalWeightField.value = "";
 
-    function updateName() {
-      localStorage.removeItem("name");
-      location.href = "index.html";
-    }
+    //   location.href = "tracker.html";
+    // }
+
+    // function updateName() {
+    //   localStorage.removeItem("name");
+    //   location.href = "index.html";
+    // }
 
   </script>
 
